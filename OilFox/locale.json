@@ -1,0 +1,31 @@
+{
+  "translations": {
+    "de": {
+      "___ [ OilFox Login Data ] ______________________________________________________________________________": "___ [ OilFox Zugangsdaten ] _________________________________________________________________________________",
+      "___ [ Module Settings ] ________________________________________________________________________________": "___ [ Modul Einstellungen ] _________________________________________________________________________________",
+      "Please enter your login details of your oilfox account.": "Bitte hinterlege die Zugangsdaten von deinem OilFox Account.",
+      "E-Mail Address": "E-Mail Adresse",
+      "Password": "Passwort",
+      "Error: Your email address or password of your oilfox account is invalid!": "Fehler: Die E-Mail Adresse oder das Passwort von deinem OilFox Account ist ungültig!",
+      "OilFox login information are valid!": "Die OilFox Zugangsdaten sind gültig!",
+      "Get Data": "OilFox Daten abrufen",
+      "Oil Type": "Heizölsorte",
+      "Volume": "Tankvolumen",
+      "Current Level (L)": "aktueller Füllstand (L)",
+      "Current Level (%)": "aktueller Füllstand (%)",
+      "Level next month (L)": "geschätzter Füllstand nächsten Monat (L)",
+      "Level next month (%)": "geschätzter Füllstand nächsten Monat (%)",
+      "Battery": "Batterie",
+      "Current Price": "aktueller Heizölpreis",
+      "Minutes": "Minuten",
+      "Tank Height": "Tankhöhe",
+      "Filling Height": "Füllhöhe",
+      "Empty Height": "Leerhöhe",
+      "___ [ Logging ] ________________________________________________________________________________________": "___ [ Debug Log ] _____________________________________________________________________________________________",
+      "enable logging": "Log Meldungen aktivieren",
+      "___ [ Support ] ________________________________________________________________________________________": "___ [ Unterstützung ] __________________________________________________________________________________________",
+      "If you like this module and want to support further development of my symcon modules, feel free to donate at www.paypal.me/codeking": "Wenn dir dieses Modul gefällt oder du die weitere Entwicklung von IP-Symcon Modulen von mir unterstützen möchtest,\r\nkannst du mir gerne eine kleine Spende zukommen lassen."
+    }
+    }
+  }
+}

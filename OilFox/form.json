@@ -1,0 +1,72 @@
+{
+  "elements": [
+    {
+      "type": "Label",
+      "label": "___ [ Support ] ________________________________________________________________________________________"
+    },
+    {
+      "type": "Label",
+      "label": "If you like this module and want to support further development of my symcon modules, feel free to donate at www.paypal.me/codeking"
+    },
+    {
+      "type": "Label",
+      "label": "www.paypal.me/codeking"
+    },
+    {
+      "type": "Label",
+      "label": "___ [ OilFox Login Data ] ______________________________________________________________________________"
+    },
+    {
+      "name": "email",
+      "type": "ValidationTextBox",
+      "caption": "E-Mail Address"
+    },
+    {
+      "name": "password",
+      "type": "PasswordTextBox",
+      "caption": "Password"
+    },
+    {
+      "type": "Label",
+      "label": "___ [ Module Settings ] ________________________________________________________________________________"
+    },
+    {
+      "type": "IntervalBox",
+      "name": "interval",
+      "caption": "Minutes"
+    },
+    {
+      "type": "Label",
+      "label": "___ [ Logging ] ________________________________________________________________________________________"
+    },
+    {
+      "type": "CheckBox",
+      "name": "log",
+      "caption": "enable logging"
+    }
+  ],
+  "status": [
+    {
+      "code": 101,
+      "icon": "inactive",
+      "caption": "Please enter your login details of your oilfox account."
+    },
+    {
+      "code": 102,
+      "icon": "active",
+      "caption": "OilFox login information are valid!"
+    },
+    {
+      "code": 201,
+      "icon": "error",
+      "caption": "Error: Your email address or password of your oilfox account is invalid!"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Button",
+      "label": "Get Data",
+      "onClick": "Oilfox_Update($id)"
+    }
+  ]
+}

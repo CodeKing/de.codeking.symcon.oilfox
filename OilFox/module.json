@@ -1,0 +1,13 @@
+{
+  "id": "{11B57139-0DC7-4A7F-9DED-385B99352C97}",
+  "name": "OilFox",
+  "type": 3,
+  "vendor": "LIV-T GmbH",
+  "aliases": [
+    "OilFox"
+  ],
+  "parentRequirements": [],
+  "childRequirements": [],
+  "implemented": [],
+  "prefix": "OF"
+}
