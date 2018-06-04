@@ -142,7 +142,7 @@ class Oilfox extends Module
                 'Current Level (L)' => (float)$metering['liters'],
                 'Current Level (%)' => (int)$metering['fillingPercentage'],
                 'Level next month (L)' => (float)$forecast['liters'],
-                'Level next month (%)' => (int)$forecast['fillingpercentage'],
+                'Level next month (%)' => (int)$forecast['fillingPercentage'],
                 'Battery' => (int)$tank['metering']['battery'],
                 'Current Price' => (float)$current_price['price']
             ];
