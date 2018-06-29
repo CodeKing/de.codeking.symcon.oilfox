@@ -55,7 +55,7 @@ class Oilfox extends Module
         $this->RegisterPropertyInteger('interval', 60); // in minutes
 
         // register timer
-        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_Update($_IPS[\'TARGET\']);');
+        $this->RegisterTimer('UpdateData', 60 * 60 * 1000, $this->_getPrefix() . '_Update($_IPS[\'TARGET\']);');
     }
 
     /**
