@@ -7,11 +7,11 @@ require_once(__ROOT__ . '/libs/helpers/autoload.php');
  * Class Oilfox
  * Driver to OilFox API (inofficial)
  *
- * @version     1.1
+ * @version     1.2
  * @category    Symcon
  * @package     de.codeking.symcon.oilfox
- * @author      Frank Herrmann <frank@codeking.de>
- * @link        https://codeking.de
+ * @author      Frank Herrmann <frank@herrmann.to>
+ * @link        https://herrmann.to
  * @link        https://github.com/CodeKing/de.codeking.symcon.oilfox
  *
  */
@@ -187,14 +187,14 @@ class Oilfox extends Module
     public function Api(string $request)
     {
         // build url
-        $url = 'https://api.oilfox.io/v2/' . $request;
+        $url = 'https://api.oilfox.io/v3/' . $request;
 
         // curl options
         $curlOptions = [
             CURLOPT_TIMEOUT => 10,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
-                'X-Auth-Token: ' . $this->token,
+                'Authorization: Bearer ' . $this->token,
                 'Content-Type: application/json',
                 'Connection: Keep-Alive',
                 'User-Agent: okhttp/3.2.0'
@@ -219,7 +219,7 @@ class Oilfox extends Module
         $this->_log('OilFox', sprintf('Logging in to oilfox account of %s...', $this->email));
 
         // login url
-        $url = 'https://api.oilfox.io/v2/backoffice/session';
+        $url = 'https://api.oilfox.io/v3/login';
 
         // curl options
         $curlOptions = [
@@ -245,7 +245,7 @@ class Oilfox extends Module
 
         // extract token
         $json = json_decode($result, true);
-        $this->token = isset($json['token']) ? $json['token'] : false;
+        $this->token = isset($json['access_token']) ? $json['access_token'] : false;
 
         // save valid token
         if ($this->token) {
