@@ -105,10 +105,8 @@ class Oilfox extends Module
             $this->token = $this->GetBuffer('token');
         }
 
-        // login if no valid token was provided
-        if (!$this->token) {
-            $this->Login();
-        }
+        // force login every request
+        $this->Login();
 
         // simple error handling
         if (!$this->token) {
