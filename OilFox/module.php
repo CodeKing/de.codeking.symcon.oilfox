@@ -23,18 +23,9 @@ class Oilfox extends Module
 
     public $tanks = [];
 
-    protected $archive_mappings = [ // archive: 0 = default, 1 = counter
-        'Current Level (L)' => 0,
-        'Current Level (%)' => 0,
-        'Current Price' => 0
-    ];
-
     protected $profile_mappings = [
         'Current Level (L)' => 'Liter',
         'Current Level (%)' => '~Intensity.100',
-        'Level next month (L)' => 'Liter',
-        'Level next month (%)' => '~Intensity.100',
-        'Current Price' => 'Price',
         'Battery' => '~Battery.100',
         'Volume' => 'Liter',
         'Tank Height' => 'Distance',
@@ -118,31 +109,26 @@ class Oilfox extends Module
         // everything looks ok, start
         $this->SetStatus(102);
 
-        // get tank data
-        $tanks = $this->Api('user/summary');
+        // get summary data
+        $summary = $this->Api('summary');
 
-        // loop each tank
-        foreach ($tanks['devices'] AS $tank) {
+        // loop each device / tank
+        foreach ($summary['devices'] AS $tank) {
             // extract values
             $product = isset($tank['partner']['primaryProducts'][0]) ? $tank['partner']['primaryProducts'][0] : null;
-            $current_price = $tank['chartData']['priceData'] ? end($tank['chartData']['priceData']) : null;
-            $forecast = $tank['chartData']['forecastData'] ? reset($tank['chartData']['forecastData']) : null;
-            $metering = $tank['metering'];
+            $metering = $tank['lastMetering'];
 
             // map data
             $this->tanks[$tank['id']] = [
                 'Name' => $tank['name'] ? $tank['name'] : $tank['hwid'],
                 'Oil Type' => $product['name'],
-                'Volume' => (float)$tank['tankVolume'],
-                'Tank Height' => $tank['tankHeight'],
+                'Volume' => (float)$tank['tank']['volume'],
+                'Tank Height' => $tank['tank']['height'],
                 'Empty Height' => $metering['value'],
                 'Filling Height' => $metering['currentOilHeight'],
                 'Current Level (L)' => (float)$metering['liters'],
                 'Current Level (%)' => (int)$metering['fillingPercentage'],
-                'Level next month (L)' => (float)$forecast['liters'],
-                'Level next month (%)' => (int)$forecast['fillingPercentage'],
-                'Battery' => (int)$tank['metering']['battery'],
-                'Current Price' => (float)$current_price['price']
+                'Battery' => (int)$metering['battery']
             ];
         }
 
@@ -185,7 +171,7 @@ class Oilfox extends Module
     public function Api(string $request)
     {
         // build url
-        $url = 'https://api.oilfox.io/v3/' . $request;
+        $url = 'https://api.oilfox.io/v4/' . $request;
 
         // curl options
         $curlOptions = [
@@ -195,7 +181,8 @@ class Oilfox extends Module
                 'Authorization: Bearer ' . $this->token,
                 'Content-Type: application/json',
                 'Connection: Keep-Alive',
-                'User-Agent: okhttp/3.2.0'
+                'User-Agent: okhttp/3.2.0',
+                'Accept: */*'
             ]
         ];
 
